@@ -1,0 +1,34 @@
+#include <iostream>
+
+#include <vector>
+
+class A {
+public:
+    int a;
+};
+
+class B {
+public:
+    float b;
+};
+
+
+template <class... ComponteTyps>
+class Archetype {
+public:
+    std::tuple<std::vector<ComponteTyps>...> components;
+};
+
+template <typename... Types> void func2(std::vector<Types>... v2);
+
+int main()
+{
+    std::cout << "Hello, World!" << std::endl;
+
+    Archetype<A, B> archetype;
+
+    func2<int, float>(std::vector<int>{1, 2, 3}, std::vector<float>{1.0f, 2.0f, 3.0f});
+
+    
+    return 0;
+}
