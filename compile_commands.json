@@ -1,0 +1,21 @@
+[
+{
+  "directory": "/media/ssd2/dev/ecs_test/build",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -g -o CMakeFiles/NeithECS.dir/main.cpp.o -c /media/ssd2/dev/ecs_test/main.cpp",
+  "file": "/media/ssd2/dev/ecs_test/main.cpp",
+  "output": "CMakeFiles/NeithECS.dir/main.cpp.o"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -g -o CMakeFiles/NeithECS.dir/ecs.cpp.o -c /media/ssd2/dev/ecs_test/ecs.cpp",
+  "file": "/media/ssd2/dev/ecs_test/ecs.cpp",
+  "output": "CMakeFiles/NeithECS.dir/ecs.cpp.o"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -g -c /media/ssd2/dev/ecs_test/ecs.h",
+  "file": "/media/ssd2/dev/ecs_test/ecs.h"
+}
+]
