@@ -45,6 +45,14 @@ struct Velocity : public Component {
 
 
 
+void loop(std::vector<Transform>& v1, std::vector<Velocity>& v2, int count) {
+    float total = 0;
+    for(int i = 0; i < count; i++) {
+        total += v1[i].x;
+        total += v2[i].x;
+    }
+    std::cout << "Total: " << total << std::endl;
+}
 
 
 int main()
@@ -93,18 +101,54 @@ int main()
 
     start = std::chrono::high_resolution_clock::now();
     
-
-    ecs.eachComponent<Transform, Velocity>([&](Transform* t, Velocity* v) {
+    //loop(v1, v2, count);
+    
+    ecs.filter<Transform, Velocity, Size>()->each([&](Transform* t, Velocity* v, Size* s) {
         total += t->x;
     });
+    std::cout << "Total: " << total << std::endl;
+    total = 0;
 
+    ecs.filter<Transform, Velocity>()->each([&](Transform* t, Velocity* v) {
+        total += t->x;
+    });
+    std::cout << "Total: " << total << std::endl;
+    total = 0;
+
+    ecs.filter<Size, Velocity>()->each([&](Size* s, Velocity* v) {
+        total += s->x;
+    });
+    std::cout << "Total: " << total << std::endl;
+    total = 0;
+
+    ecs.filter<Transform, Size>()->each([&](Transform* t, Size* s) {
+        total += t->x;
+    });
+    std::cout << "Total: " << total << std::endl;
+    total = 0;
+
+    ecs.filter<Transform>()->each([&](Transform* t) {
+        total += t->x;
+    });
+    std::cout << "Total: " << total << std::endl;
+    total = 0;
+
+    ecs.filter<Velocity>()->each([&](Velocity* v) {
+        total += v->x;
+    });
+    std::cout << "Total: " << total << std::endl;
+    total = 0;
+
+    ecs.filter<Size>()->each([&](Size* s) {
+        total += s->x;
+    });
 
     std::cout << "Total: " << total << std::endl;
     total = 0;
 
-    ecs.eachComponent<Size>([&](Size* s) {
-        total += s->x;
-    });
+    //ecs.filter<Size>()->each([&](Size* s) {
+        //total += s->x;
+    //});
 
     end = std::chrono::high_resolution_clock::now();
     std::cout << "Time: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
@@ -33,7 +34,6 @@ class Archetype {
 public:
     std::unordered_map<const char*, IComeponentVector*> componentMap;
     std::vector<size_t> componentTypes;
-    std::unordered_set<Archetype*> superSetArchetypes;
     size_t id;
     int entityCount = 0;
 
@@ -56,11 +56,37 @@ public:
     }
 };
 
+class IFilter {
+};
+
+template <class... ComponentTypes>
+class Filter : public IFilter {
+public:
+    std::vector<size_t> componentTypes;
+    std::vector<Archetype*> archetypes;
+
+    Filter(std::vector<Archetype*> archetypes) {
+        componentTypes = {typeid(ComponentTypes).hash_code()...};
+        this->archetypes = archetypes;
+    }
+
+    template <class Func>
+    void each(Func func) {
+        for (auto &archetype : archetypes) {
+            std::tuple<std::vector<ComponentTypes>*...> comps = std::make_tuple(&archetype->getComponentVector<ComponentTypes>()...);
+            for (int i = 0; i < archetype->entityCount; i++) {
+                func(&std::get<getTypeIndexInTemplateList<ComponentTypes, ComponentTypes...>()>(comps)->at(i)...);
+            }
+        }
+    }
+};
+
 
 class Ecs {
 private:
     std::unordered_map<size_t, Archetype*> archetypeMap;
     std::unordered_map<size_t, std::vector<Archetype*>> archetypeWithComponentMap;
+    std::unordered_map<size_t, IFilter*> filterMap;
     EntityHandle entityCount = 0;
 
 public:
@@ -78,26 +104,37 @@ public:
         return entityHandle;
     }
 
-    template <class... ComponentTypes, class Func>
-    void eachComponent(Func func) {
+    template <class... ComponentTypes>
+    void createFilter() {
         size_t key = (typeid(ComponentTypes).hash_code() + ...);
-        Archetype *archetype = this->archetypeMap[key];
-        if (archetype == nullptr) {
-            std::cout << "no archetype found" << std::endl;
+        std::vector<std::vector<Archetype*>*> archetypeWithComponentMaps = {&archetypeWithComponentMap[typeid(ComponentTypes).hash_code()]...};
+        std::vector<Archetype*>* currentMap = archetypeWithComponentMaps[0];
+        std::sort(currentMap->begin(), currentMap->end());
+        std::vector<Archetype*> *intersection = new std::vector<Archetype*>();
+        for(int i = 1; i < archetypeWithComponentMaps.size(); i++) {
+            std::vector<Archetype*>* nextMap = archetypeWithComponentMaps[i];
+            std::sort(nextMap->begin(), nextMap->end());
+            intersection->clear();
+            std::set_intersection(currentMap->begin(), currentMap->end(), nextMap->begin(), nextMap->end(), std::back_inserter(*intersection));
+            currentMap = intersection;
         }
-        std::tuple<std::vector<ComponentTypes>*...> comps = std::make_tuple(&archetype->getComponentVector<ComponentTypes>()...);
-        auto starttime = std::chrono::high_resolution_clock::now();
-        for (int i = 0; i < archetype->entityCount; i++) {
-            func(&std::get<getTypeIndexInTemplateList<ComponentTypes, ComponentTypes...>()>(comps)->at(i)...);
+        std::cout << "intersection size: " << currentMap->size() << std::endl;
+        (std::cout << ... << typeid(ComponentTypes).name()) << std::endl;
+
+        filterMap[key] = new Filter<ComponentTypes...>(*currentMap);
+
+    }
+
+    template <class... ComponentTypes>
+    Filter<ComponentTypes...>* filter() {
+        size_t key = (typeid(ComponentTypes).hash_code() + ...);
+        if (filterMap.find(key) == filterMap.end()) {
+            createFilter<ComponentTypes...>();
         }
-        for (auto &superSetArchetype : archetype->superSetArchetypes) {
-            std::tuple<std::vector<ComponentTypes>*...> comps = std::make_tuple(&superSetArchetype->getComponentVector<ComponentTypes>()...);
-            for (int i = 0; i < superSetArchetype->entityCount; i++) {
-                func(&std::get<getTypeIndexInTemplateList<ComponentTypes, ComponentTypes...>()>(comps)->at(i)...);
-            }
-        }
-        auto end = std::chrono::high_resolution_clock::now();
-        std::cout << "run: " << std::chrono::duration_cast<std::chrono::microseconds>(end - starttime).count() << std::endl;
+        IFilter *filter = filterMap[key];
+        return static_cast<Filter<ComponentTypes...>*>(filter);
+
+
     }
 
 private:
@@ -108,11 +145,6 @@ private:
         archetype->componentTypes = {typeid(ComponentTypes).hash_code()...};
         (archetype->addComponentVector<ComponentTypes>(), ...);
         archetypeMap[key] = archetype;
-        setSubAndSuperSetArchetypest(archetype);
         (archetypeWithComponentMap[typeid(ComponentTypes).hash_code()].push_back(archetype), ...);
     }
-
-    void setSubAndSuperSetArchetypest(Archetype *newArchetype);
-
-    bool isSubset(std::vector<size_t> subset, std::vector<size_t> set);
 };
