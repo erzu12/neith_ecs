@@ -1,21 +1,367 @@
 [
 {
   "directory": "/media/ssd2/dev/ecs_test/build",
-  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -g -o CMakeFiles/NeithECS.dir/main.cpp.o -c /media/ssd2/dev/ecs_test/main.cpp",
-  "file": "/media/ssd2/dev/ecs_test/main.cpp",
-  "output": "CMakeFiles/NeithECS.dir/main.cpp.o"
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -O3 -DNDEBUG -o CMakeFiles/NeithECS.dir/src/main.cpp.o -c /media/ssd2/dev/ecs_test/src/main.cpp",
+  "file": "/media/ssd2/dev/ecs_test/src/main.cpp",
+  "output": "CMakeFiles/NeithECS.dir/src/main.cpp.o"
 },
 
 {
   "directory": "/media/ssd2/dev/ecs_test/build",
-  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -g -o CMakeFiles/NeithECS.dir/ecs.cpp.o -c /media/ssd2/dev/ecs_test/ecs.cpp",
-  "file": "/media/ssd2/dev/ecs_test/ecs.cpp",
-  "output": "CMakeFiles/NeithECS.dir/ecs.cpp.o"
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/src -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=gnu++23 -o CMakeFiles/NeithECS_test.dir/test/ecs_test.cpp.o -c /media/ssd2/dev/ecs_test/test/ecs_test.cpp",
+  "file": "/media/ssd2/dev/ecs_test/test/ecs_test.cpp",
+  "output": "CMakeFiles/NeithECS_test.dir/test/ecs_test.cpp.o"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
 },
 
 {
   "directory": "/media/ssd2/dev/ecs_test/build",
-  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -g -c /media/ssd2/dev/ecs_test/ecs.h",
-  "file": "/media/ssd2/dev/ecs_test/ecs.h"
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -O3 -DNDEBUG -c /media/ssd2/dev/ecs_test/src/ecs.h",
+  "file": "/media/ssd2/dev/ecs_test/src/ecs.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-actions.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-actions.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/gmock-internal-utils.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/gmock-internal-utils.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/gmock-port.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/gmock-port.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/custom/gmock-port.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/custom/gmock-port.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/gmock-pp.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/gmock-pp.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-cardinalities.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-cardinalities.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-function-mocker.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-function-mocker.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-spec-builders.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-spec-builders.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-matchers.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-matchers.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/custom/gmock-matchers.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/custom/gmock-matchers.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-more-actions.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-more-actions.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/custom/gmock-generated-actions.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/internal/custom/gmock-generated-actions.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-more-matchers.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-more-matchers.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-nice-strict.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include/gmock/gmock-nice-strict.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-cardinalities.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-cardinalities.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-internal-utils.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-internal-utils.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-matchers.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-matchers.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-spec-builders.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock-spec-builders.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googlemock",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googlemock/src/gmock.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-assertion-result.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-assertion-result.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-message.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-message.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-port.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-port.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-death-test.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-death-test.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-matchers.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-matchers.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-printers.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-printers.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-string.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-string.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-param-test.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-param-test.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-test-part.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-test-part.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-typed-test.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-typed-test.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest_prod.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest_prod.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-assertion-result.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-assertion-result.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-death-test.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-death-test.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/custom/gtest.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/internal/custom/gtest.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-internal-inl.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-internal-inl.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-spi.h",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include/gtest/gtest-spi.h"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-filepath.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-filepath.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-matchers.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-matchers.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-port.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-port.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-printers.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-printers.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-test-part.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-test-part.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-typed-test.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest-typed-test.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/. -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest.cc",
+  "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest.cc"
 }
 ]

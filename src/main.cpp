@@ -8,7 +8,6 @@
 
 #include "ecs.h"
 
-class Component {};
 
 struct Transform : public Component {
     float x, y, z;
@@ -91,60 +90,6 @@ int main()
         //ecs.createEntity(v2[i], v3[i], v1[i]);
     //}
 
-    ecs.createEntity(Transform(1, 1, 1));
-    ecs.createEntity(Transform(1, 1, 1), Velocity(1, 1, 1));
-    ecs.createEntity(Velocity(1, 1, 1), Transform(1, 1, 1));
-    ecs.createEntity(Velocity(1, 1, 1), Size(1, 1, 1), Transform(1, 1, 1));
-    ecs.createEntity(Size(1, 1, 1), Velocity(1, 1, 1), Transform(1, 1, 1));
-    ecs.createEntity(Size(1, 1, 1), Transform(1, 1, 1));
-
-
-    start = std::chrono::high_resolution_clock::now();
-    
-    //loop(v1, v2, count);
-    
-    ecs.filter<Transform, Velocity, Size>()->each([&](Transform* t, Velocity* v, Size* s) {
-        total += t->x;
-    });
-    std::cout << "Total: " << total << std::endl;
-    total = 0;
-
-    ecs.filter<Transform, Velocity>()->each([&](Transform* t, Velocity* v) {
-        total += t->x;
-    });
-    std::cout << "Total: " << total << std::endl;
-    total = 0;
-
-    ecs.filter<Size, Velocity>()->each([&](Size* s, Velocity* v) {
-        total += s->x;
-    });
-    std::cout << "Total: " << total << std::endl;
-    total = 0;
-
-    ecs.filter<Transform, Size>()->each([&](Transform* t, Size* s) {
-        total += t->x;
-    });
-    std::cout << "Total: " << total << std::endl;
-    total = 0;
-
-    ecs.filter<Transform>()->each([&](Transform* t) {
-        total += t->x;
-    });
-    std::cout << "Total: " << total << std::endl;
-    total = 0;
-
-    ecs.filter<Velocity>()->each([&](Velocity* v) {
-        total += v->x;
-    });
-    std::cout << "Total: " << total << std::endl;
-    total = 0;
-
-    ecs.filter<Size>()->each([&](Size* s) {
-        total += s->x;
-    });
-
-    std::cout << "Total: " << total << std::endl;
-    total = 0;
 
     //ecs.filter<Size>()->each([&](Size* s) {
         //total += s->x;

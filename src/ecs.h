@@ -7,6 +7,8 @@
 #include <vector>
 #include <chrono>
 
+class Component {};
+
 typedef unsigned long long EntityHandle;
 
 template<typename Target, typename ListHead, typename... ListTails>
@@ -37,7 +39,9 @@ public:
     size_t id;
     int entityCount = 0;
 
-    Archetype(size_t id);
+    Archetype(size_t id) {
+        this->id = id;
+}
 
     template <class T>
     std::vector<T> &getComponentVector() {
@@ -104,24 +108,31 @@ public:
         return entityHandle;
     }
 
+    template <class T>
+    void printVec(std::vector<T> &vec, std::string name) {
+        std::cout << name << ": ";
+        for (auto &v : vec) {
+            std::cout << v << ", ";
+        }
+        std::cout << std::endl;
+    }
+
     template <class... ComponentTypes>
     void createFilter() {
         size_t key = (typeid(ComponentTypes).hash_code() + ...);
+        // seems a bit ugly but it works (I think)
         std::vector<std::vector<Archetype*>*> archetypeWithComponentMaps = {&archetypeWithComponentMap[typeid(ComponentTypes).hash_code()]...};
-        std::vector<Archetype*>* currentMap = archetypeWithComponentMaps[0];
-        std::sort(currentMap->begin(), currentMap->end());
+        std::vector<Archetype*> currentMap = *archetypeWithComponentMaps[0];
+        std::sort(currentMap.begin(), currentMap.end());
         std::vector<Archetype*> *intersection = new std::vector<Archetype*>();
         for(int i = 1; i < archetypeWithComponentMaps.size(); i++) {
             std::vector<Archetype*>* nextMap = archetypeWithComponentMaps[i];
             std::sort(nextMap->begin(), nextMap->end());
             intersection->clear();
-            std::set_intersection(currentMap->begin(), currentMap->end(), nextMap->begin(), nextMap->end(), std::back_inserter(*intersection));
-            currentMap = intersection;
+            std::set_intersection(currentMap.begin(), currentMap.end(), nextMap->begin(), nextMap->end(), std::back_inserter(*intersection));
+            currentMap = *intersection;
         }
-        std::cout << "intersection size: " << currentMap->size() << std::endl;
-        (std::cout << ... << typeid(ComponentTypes).name()) << std::endl;
-
-        filterMap[key] = new Filter<ComponentTypes...>(*currentMap);
+        filterMap[key] = new Filter<ComponentTypes...>(currentMap);
 
     }
 
@@ -140,7 +151,6 @@ public:
 private:
     template <class... ComponentTypes>
     void createArchetype(size_t key) {
-        std::cout << "key: " << key << std::endl;
         Archetype *archetype = new Archetype(key);
         archetype->componentTypes = {typeid(ComponentTypes).hash_code()...};
         (archetype->addComponentVector<ComponentTypes>(), ...);
