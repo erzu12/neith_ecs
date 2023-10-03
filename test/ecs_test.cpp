@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "ecs.h"
+#include <ecs.h>
 
 struct Transform : public Component {
     float x, y, z;
@@ -112,7 +112,6 @@ TEST(EcsTest, filter3Components) {
     });
     EXPECT_EQ(total, 1);
 }
-    
 
 TEST(EcsTest, complete) {
     Ecs ecs;
