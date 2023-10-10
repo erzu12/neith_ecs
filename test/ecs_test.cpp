@@ -55,10 +55,10 @@ TEST(EcsTest, createMultipleEntities) {
     EXPECT_EQ(entity2, 1);
 }
 
-TEST(EcsTest, filter) {
+TEST(EcsTest, query) {
     Ecs ecs;
     auto entity = ecs.createEntity(Transform(1, 2, 3), Velocity(4, 5, 6));
-    ecs.filter<Transform, Velocity>()->each([&](Transform *t, Velocity *v) {
+    ecs.query<Transform, Velocity>()->each([&](Transform *t, Velocity *v) {
         EXPECT_EQ(t->x, 1);
         EXPECT_EQ(t->y, 2);
         EXPECT_EQ(t->z, 3);
@@ -68,15 +68,15 @@ TEST(EcsTest, filter) {
     });
 }
 
-TEST(EcsTest, filterSubsetOfComponents) {
+TEST(EcsTest, querySubsetOfComponents) {
     Ecs ecs;
     auto entity = ecs.createEntity(Transform(1, 2, 3), Velocity(4, 5, 6));
-    ecs.filter<Transform>()->each([&](Transform *t) {
+    ecs.query<Transform>()->each([&](Transform *t) {
         EXPECT_EQ(t->x, 1);
         EXPECT_EQ(t->y, 2);
         EXPECT_EQ(t->z, 3);
     });
-    ecs.filter<Velocity>()->each([&](Velocity *v) {
+    ecs.query<Velocity>()->each([&](Velocity *v) {
         EXPECT_EQ(v->x, 4);
         EXPECT_EQ(v->y, 5);
         EXPECT_EQ(v->z, 6);
@@ -84,34 +84,85 @@ TEST(EcsTest, filterSubsetOfComponents) {
 }
 
 
-TEST(EcsTest, filterSuppersetOfComponents) {
+TEST(EcsTest, querySuppersetOfComponents) {
     Ecs ecs;
     auto entity = ecs.createEntity(Transform(1, 2, 3), Velocity(4, 5, 6));
-    ecs.filter<Transform, Velocity, Size>()->each([&](Transform *t, Velocity *v, Size *s) {
+    ecs.query<Transform, Velocity, Size>()->each([&](Transform *t, Velocity *v, Size *s) {
         FAIL();
     });
 }
 
-TEST(EcsTest, filter2of3Components) {
+TEST(EcsTest, query2of3Components) {
     Ecs ecs;
     ecs.createEntity(Transform(1, 1, 1), Velocity(1, 1, 1), Size(1, 1, 1));
     ecs.createEntity(Transform(1, 1, 1), Velocity(1, 1, 1));
     int total = 0;
-    ecs.filter<Transform, Velocity>()->each([&](Transform *t, Velocity *v) {
+    ecs.query<Transform, Velocity>()->each([&](Transform *t, Velocity *v) {
         total += t->x;
     });
     EXPECT_EQ(total, 2);
 }
 
-TEST(EcsTest, filter3Components) {
+TEST(EcsTest, query3Components) {
     Ecs ecs;
     auto entity = ecs.createEntity(Transform(1, 2, 3), Velocity(4, 5, 6), Size(7, 8, 9));
     int total = 0;
-    ecs.filter<Transform, Velocity, Size>()->each([&](Transform *t, Velocity *v, Size *s) {
+    ecs.query<Transform, Velocity, Size>()->each([&](Transform *t, Velocity *v, Size *s) {
         total += t->x;
     });
     EXPECT_EQ(total, 1);
 }
+
+TEST(EcsTest, get) {
+    Ecs ecs;
+    auto entity0 = ecs.createEntity(Transform(1, 1, 1));
+    auto entity1 = ecs.createEntity(Transform(2, 2, 2));
+    auto entity2 = ecs.createEntity(Transform(3, 3, 3));
+    ecs.get<Transform>(entity1, [&](Transform *t) {
+        EXPECT_EQ(t->x, 2);
+    });
+    ecs.get<Transform>(entity2, [&](Transform *t) {
+        EXPECT_EQ(t->x, 3);
+    });
+    ecs.get<Transform>(entity0, [&](Transform *t) {
+        EXPECT_EQ(t->x, 1);
+    });
+}
+
+TEST(EcsTest, getDifferentComps) {
+    Ecs ecs;
+    auto entity0 = ecs.createEntity(Transform(1, 1, 1));
+    auto entity1 = ecs.createEntity(Transform(2, 2, 2), Velocity(2, 2, 2));
+    auto entity2 = ecs.createEntity(Velocity(3, 3, 3));
+
+    ecs.get<Transform>(entity0, [&](Transform *t) {
+        EXPECT_EQ(t->x, 1);
+    });
+
+    ecs.get<Transform>(entity1, [&](Transform *t) {
+        EXPECT_EQ(t->x, 2);
+    });
+
+    ecs.get<Velocity>(entity1, [&](Velocity *v) {
+        EXPECT_EQ(v->x, 2);
+    });
+}
+
+TEST(EcsTest, getInvalidTypes) {
+    Ecs ecs;
+    auto entity0 = ecs.createEntity(Transform(1, 1, 1));
+    auto entity2 = ecs.createEntity(Velocity(3, 3, 3));
+
+    ecs.get<Transform>(entity2, [&](Transform *t) {
+        FAIL() << "Should not get here";
+    });
+
+    ecs.get<Velocity>(entity0, [&](Velocity *v) {
+        FAIL() << "Should not get here";
+    });
+}
+
+
 
 TEST(EcsTest, complete) {
     Ecs ecs;
@@ -125,47 +176,47 @@ TEST(EcsTest, complete) {
 
     long total = 0;
 
-    ecs.filter<Transform, Velocity, Size>()->each([&](Transform* t, Velocity* v, Size* s) {
+    ecs.query<Transform, Velocity, Size>()->each([&](Transform* t, Velocity* v, Size* s) {
         total += t->x;
     });
     
     EXPECT_EQ(total, 2);
     total = 0;
 
-    ecs.filter<Transform, Velocity>()->each([&](Transform* t, Velocity* v) {
+    ecs.query<Transform, Velocity>()->each([&](Transform* t, Velocity* v) {
         total += t->x;
     });
 
     EXPECT_EQ(total, 4);
     total = 0;
 
-    ecs.filter<Size, Velocity>()->each([&](Size* s, Velocity* v) {
+    ecs.query<Size, Velocity>()->each([&](Size* s, Velocity* v) {
         total += s->x;
     });
 
     EXPECT_EQ(total, 2);
     total = 0;
 
-    ecs.filter<Transform, Size>()->each([&](Transform* t, Size* s) {
+    ecs.query<Transform, Size>()->each([&](Transform* t, Size* s) {
         total += t->x;
     });
 
     EXPECT_EQ(total, 3);
     total = 0;
 
-    ecs.filter<Transform>()->each([&](Transform* t) {
+    ecs.query<Transform>()->each([&](Transform* t) {
         total += t->x;
     });
     EXPECT_EQ(total, 6);
     total = 0;
 
-    ecs.filter<Velocity>()->each([&](Velocity* v) {
+    ecs.query<Velocity>()->each([&](Velocity* v) {
         total += v->x;
     });
     EXPECT_EQ(total, 4);
     total = 0;
 
-    ecs.filter<Size>()->each([&](Size* s) {
+    ecs.query<Size>()->each([&](Size* s) {
         total += s->x;
     });
     EXPECT_EQ(total, 3);

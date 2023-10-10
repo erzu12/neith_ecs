@@ -6,7 +6,7 @@
 #include <vector>
 #include <chrono>
 
-#include "ecs.h"
+#include <ecs.h>
 
 
 struct Transform : public Component {
@@ -44,18 +44,18 @@ struct Velocity : public Component {
 
 
 
-void loop(std::vector<Transform>& v1, std::vector<Velocity>& v2, int count) {
+int loop(std::vector<Transform>& v1, std::vector<Velocity>& v2, int count) {
     float total = 0;
     for(int i = 0; i < count; i++) {
         total += v1[i].x;
-        total += v2[i].x;
     }
-    std::cout << "Total: " << total << std::endl;
+    return total;
 }
 
 
 int main()
 {
+    std::cout << "Hello World!" << std::endl;
     Transform transform = Transform{1, 2, 3};
     Velocity velocity = Velocity{4, 5, 6};
     Size size = Size{7, 8, 9};
@@ -63,7 +63,7 @@ int main()
     std::vector<Velocity> v2;
     std::vector<Size> v3;
 
-    int count = 10000000;
+    int count = 1000000;
 
     for (int i = 0; i < count; i++) {
         v1.push_back(transform);
@@ -77,26 +77,44 @@ int main()
 
     float total = 0;
     
-    auto start = std::chrono::high_resolution_clock::now();
-    auto end = std::chrono::high_resolution_clock::now();
-    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
 
     Ecs ecs;
 
-    //for(int i = 0; i < count / 2; i++) {
+    for(int i = 0; i < count; i++) {
         //ecs.createEntity(v1[i], v2[i]);
-    //}
+        ecs.createEntity(Transform{1, 2, 3}, Velocity{4, 5, 6});
+    }
     //for(int i = count / 2; i < count; i++) {
         //ecs.createEntity(v2[i], v3[i], v1[i]);
     //}
 
+    ecs.query<Transform, Velocity>()->each([&](Transform* t, Velocity* v) {
+        total += t->x;
+    });
+    total = 0;
+    std::cout << "Total: " << total << std::endl;
 
-    //ecs.filter<Size>()->each([&](Size* s) {
+    auto start = std::chrono::high_resolution_clock::now();
+
+    ecs.query<Transform, Velocity>()->each([&](Transform* t, Velocity* v) {
+        total += t->x;
+    });
+
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << std::endl;
+    std::cout << "Total: " << total << std::endl;
+    total = 0;
+
+
+    //ecs.query<Size>()->each([&](Size* s) {
         //total += s->x;
     //});
+    start = std::chrono::high_resolution_clock::now();
+
+    total = loop(v1, v2, count);
 
     end = std::chrono::high_resolution_clock::now();
-    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
+    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << std::endl;
 
     std::cout << "Total: " << total << std::endl;
     

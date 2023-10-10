@@ -35,6 +35,13 @@
 },
 
 {
+  "directory": "/media/ssd2/dev/ecs_test/build/testapp",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/src -I/media/ssd2/dev/ecs_test/src/include -O3 -DNDEBUG -std=gnu++23 -o CMakeFiles/testapp.dir/main.cpp.o -c /media/ssd2/dev/ecs_test/testapp/main.cpp",
+  "file": "/media/ssd2/dev/ecs_test/testapp/main.cpp",
+  "output": "testapp/CMakeFiles/testapp.dir/main.cpp.o"
+},
+
+{
   "directory": "/media/ssd2/dev/ecs_test/build/test",
   "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/src -I/media/ssd2/dev/ecs_test/src/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=gnu++23 -c /media/ssd2/dev/ecs_test/src/include/ecs.h",
   "file": "/media/ssd2/dev/ecs_test/src/include/ecs.h"

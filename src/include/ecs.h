@@ -48,6 +48,11 @@ public:
         return static_cast<ComponentVector<T>*>(componentMap[typeid(T).name()])->getVector();
     }
 
+    template<class... ComponentTypes>
+    bool hasComponents() {
+        return ((std::find(componentTypes.begin(), componentTypes.end(), typeid(ComponentTypes).hash_code()) != componentTypes.end()) && ...);
+    }
+
     template <class... ComponentTypes>
     void addComponent(EntityHandle entityHandle, ComponentTypes... components) {
         entityCount++;
@@ -60,16 +65,16 @@ public:
     }
 };
 
-class IFilter {
+class IQuery {
 };
 
 template <class... ComponentTypes>
-class Filter : public IFilter {
+class Query : public IQuery {
 public:
     std::vector<size_t> componentTypes;
     std::vector<Archetype*> archetypes;
 
-    Filter(std::vector<Archetype*> archetypes) {
+    Query(std::vector<Archetype*> archetypes) {
         componentTypes = {typeid(ComponentTypes).hash_code()...};
         this->archetypes = archetypes;
     }
@@ -88,9 +93,10 @@ public:
 
 class Ecs {
 private:
+    std::vector<std::pair<Archetype*, size_t>> entityMap;
     std::unordered_map<size_t, Archetype*> archetypeMap;
     std::unordered_map<size_t, std::vector<Archetype*>> archetypeWithComponentMap;
-    std::unordered_map<size_t, IFilter*> filterMap;
+    std::unordered_map<size_t, IQuery*> queryMap;
     EntityHandle entityCount = 0;
 
 public:
@@ -105,8 +111,21 @@ public:
         Archetype *archetype = archetypeMap[key];
         EntityHandle entityHandle = entityCount++;
         archetype->addComponent(entityHandle, components...);
+        entityMap.push_back(std::make_pair(archetype, archetype->entityCount - 1));
         return entityHandle;
     }
+
+    template <class... ComponentTypes, class Func>
+    void get(EntityHandle entityHandle, Func func) {
+        Archetype *archetype = entityMap[entityHandle].first;
+        if (!archetype->hasComponents<ComponentTypes...>()) {
+            return;
+        }
+        size_t index = entityMap[entityHandle].second;
+        std::tuple<std::vector<ComponentTypes>*...> comps = std::make_tuple(&archetype->getComponentVector<ComponentTypes>()...);
+        func(&std::get<getTypeIndexInTemplateList<ComponentTypes, ComponentTypes...>()>(comps)->at(index)...);
+    }
+
 
     template <class T>
     void printVec(std::vector<T> &vec, std::string name) {
@@ -118,7 +137,7 @@ public:
     }
 
     template <class... ComponentTypes>
-    void createFilter() {
+    void createQuery() {
         size_t key = (typeid(ComponentTypes).hash_code() + ...);
         // seems a bit ugly but it works (I think)
         std::vector<std::vector<Archetype*>*> archetypeWithComponentMaps = {&archetypeWithComponentMap[typeid(ComponentTypes).hash_code()]...};
@@ -132,20 +151,18 @@ public:
             std::set_intersection(currentMap.begin(), currentMap.end(), nextMap->begin(), nextMap->end(), std::back_inserter(*intersection));
             currentMap = *intersection;
         }
-        filterMap[key] = new Filter<ComponentTypes...>(currentMap);
+        queryMap[key] = new Query<ComponentTypes...>(currentMap);
 
     }
 
     template <class... ComponentTypes>
-    Filter<ComponentTypes...>* filter() {
+    Query<ComponentTypes...>* query() {
         size_t key = (typeid(ComponentTypes).hash_code() + ...);
-        if (filterMap.find(key) == filterMap.end()) {
-            createFilter<ComponentTypes...>();
+        if (queryMap.find(key) == queryMap.end()) {
+            createQuery<ComponentTypes...>();
         }
-        IFilter *filter = filterMap[key];
-        return static_cast<Filter<ComponentTypes...>*>(filter);
-
-
+        IQuery *query = queryMap[key];
+        return static_cast<Query<ComponentTypes...>*>(query);
     }
 
 private:

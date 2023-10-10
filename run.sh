@@ -10,19 +10,20 @@ compdb -p build/ list > compile_commands.json
 #
 printf "\n\n=============================================================================\n\n"
 
-# make CXXFLAGS="-O2" -j 16 -C build
-cmake --build build --config Release -j 16
+make CXXFLAGS="-O2" -j 16 -C build
+# cmake --build build --config Release -j 16
 
 printf "\n\n=============================================================================\n\n"
-cd build > /dev/null
+cd build/test > /dev/null
 
 ctest --output-on-failure -j 16
 
 result=$?
 
+cd .. > /dev/null
 
 printf "\n\n=============================================================================\n\n"
 
 if [ $result -eq 0 ]; then
-    ./NeithECS
+    ./testapp/testapp
 fi
