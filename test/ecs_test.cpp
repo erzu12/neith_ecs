@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <ecs.h>
+#include <ecs2.h>
 
 struct Transform : public Component {
     float x, y, z;
@@ -118,13 +118,13 @@ TEST(EcsTest, get) {
     auto entity0 = ecs.createEntity(Transform(1, 1, 1));
     auto entity1 = ecs.createEntity(Transform(2, 2, 2));
     auto entity2 = ecs.createEntity(Transform(3, 3, 3));
-    ecs.get<Transform>(entity1, [&](Transform *t) {
+    ecs.query<Transform>()->get(entity1, [&](Transform *t) {
         EXPECT_EQ(t->x, 2);
     });
-    ecs.get<Transform>(entity2, [&](Transform *t) {
+    ecs.query<Transform>()->get(entity2, [&](Transform *t) {
         EXPECT_EQ(t->x, 3);
     });
-    ecs.get<Transform>(entity0, [&](Transform *t) {
+    ecs.query<Transform>()->get(entity0, [&](Transform *t) {
         EXPECT_EQ(t->x, 1);
     });
 }
@@ -135,15 +135,16 @@ TEST(EcsTest, getDifferentComps) {
     auto entity1 = ecs.createEntity(Transform(2, 2, 2), Velocity(2, 2, 2));
     auto entity2 = ecs.createEntity(Velocity(3, 3, 3));
 
-    ecs.get<Transform>(entity0, [&](Transform *t) {
+    ecs.query<Transform>()->get(entity0, [&](Transform *t) {
+        std::cout << "Transform: " << t->x << ", " << t->y << ", " << t->z << std::endl;
         EXPECT_EQ(t->x, 1);
     });
 
-    ecs.get<Transform>(entity1, [&](Transform *t) {
+    ecs.query<Transform>()->get(entity1, [&](Transform *t) {
         EXPECT_EQ(t->x, 2);
     });
 
-    ecs.get<Velocity>(entity1, [&](Velocity *v) {
+    ecs.query<Velocity>()->get(entity1, [&](Velocity *v) {
         EXPECT_EQ(v->x, 2);
     });
 }
@@ -153,11 +154,11 @@ TEST(EcsTest, getInvalidTypes) {
     auto entity0 = ecs.createEntity(Transform(1, 1, 1));
     auto entity2 = ecs.createEntity(Velocity(3, 3, 3));
 
-    ecs.get<Transform>(entity2, [&](Transform *t) {
+    ecs.query<Transform>()->get(entity2, [&](Transform *t) {
         FAIL() << "Should not get here";
     });
 
-    ecs.get<Velocity>(entity0, [&](Velocity *v) {
+    ecs.query<Velocity>()->get(entity0, [&](Velocity *v) {
         FAIL() << "Should not get here";
     });
 }
@@ -166,12 +167,12 @@ TEST(EcsTest, getInvalidTypes) {
 
 TEST(EcsTest, complete) {
     Ecs ecs;
-    ecs.createEntity(Transform(1, 1, 1));
-    ecs.createEntity(Transform(1, 1, 1), Velocity(1, 1, 1));
-    ecs.createEntity(Velocity(1, 1, 1), Transform(1, 1, 1));
-    ecs.createEntity(Velocity(1, 1, 1), Size(1, 1, 1), Transform(1, 1, 1));
-    ecs.createEntity(Size(1, 1, 1), Velocity(1, 1, 1), Transform(1, 1, 1));
-    ecs.createEntity(Size(1, 1, 1), Transform(1, 1, 1));
+    EntityHandle entity0 = ecs.createEntity(Transform(1, 1, 1));
+    EntityHandle entity1 = ecs.createEntity(Transform(1, 1, 1), Velocity(1, 1, 1));
+    EntityHandle entity2 = ecs.createEntity(Velocity(1, 1, 1), Transform(1, 1, 1));
+    EntityHandle entity3 = ecs.createEntity(Velocity(1, 1, 1), Size(1, 1, 1), Transform(1, 1, 1));
+    EntityHandle entity4 = ecs.createEntity(Size(1, 1, 1), Velocity(1, 1, 1), Transform(1, 1, 1));
+    EntityHandle entity5 = ecs.createEntity(Size(1, 1, 1), Transform(1, 1, 1));
 
 
     long total = 0;

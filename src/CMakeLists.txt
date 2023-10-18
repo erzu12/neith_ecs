@@ -1,5 +1,5 @@
 file(GLOB_RECURSE SRC_DIR
-    "include/*.h"
+    "include/ecs2.h"
 )
 
 add_library(${PROJECT_NAME} STATIC

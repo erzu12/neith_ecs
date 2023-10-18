@@ -43,8 +43,8 @@
 
 {
   "directory": "/media/ssd2/dev/ecs_test/build/test",
-  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/src -I/media/ssd2/dev/ecs_test/src/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=gnu++23 -c /media/ssd2/dev/ecs_test/src/include/ecs.h",
-  "file": "/media/ssd2/dev/ecs_test/src/include/ecs.h"
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/src -I/media/ssd2/dev/ecs_test/src/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -isystem /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=gnu++23 -c /media/ssd2/dev/ecs_test/src/include/ecs2.h",
+  "file": "/media/ssd2/dev/ecs_test/src/include/ecs2.h"
 },
 
 {
@@ -363,5 +363,11 @@
   "directory": "/media/ssd2/dev/ecs_test/build/_deps/googletest-build/googletest",
   "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/include -I/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest -O3 -DNDEBUG -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c /media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest.cc",
   "file": "/media/ssd2/dev/ecs_test/build/_deps/googletest-src/googletest/src/gtest.cc"
+},
+
+{
+  "directory": "/media/ssd2/dev/ecs_test/build/testapp",
+  "command": "/sbin/c++ -I/media/ssd2/dev/ecs_test/src -I/media/ssd2/dev/ecs_test/src/include -O3 -DNDEBUG -std=gnu++23 -c /media/ssd2/dev/ecs_test/src/include/ecs.h",
+  "file": "/media/ssd2/dev/ecs_test/src/include/ecs.h"
 }
 ]
