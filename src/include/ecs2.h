@@ -1,8 +1,8 @@
 #pragma once
 
 #include <algorithm>
-#include <any>
 #include <string>
+#include <typeindex>
 #include <typeinfo>
 #include <unordered_map>
 #include <vector>
@@ -12,26 +12,34 @@ class Component {};
 //typedef unsigned long long EntityHandle;
 
 class IArchetype {
+public:
+    size_t entityCount = 0;
+    virtual void *getComponentVector(std::type_index) = 0;
 };
 
 template<class... ComponentTypes>
 class Archetype : public IArchetype {
+    std::unordered_map<std::type_index, void*> componentMap;
+public:
     std::tuple<std::vector<ComponentTypes>...> components;
-    public:
-    int entityCount = 0;
+
+    Archetype() {
+        components = std::make_tuple(std::vector<ComponentTypes>()...);
+        ((componentMap[std::type_index(typeid(ComponentTypes))] = &std::get<std::vector<ComponentTypes>>(components)), ...);
+    }
 
     //template <class T>
-    std::vector<std::any> *getComponentVector() {
-        return std::get<T>()>(components);
+    void *getComponentVector(std::type_index componentID) override {
+        return componentMap[componentID];
     }
 
     //std::tuple<std::vector<ComponentTypes>...> *getComponentVectors() {
         //return &components;
     //}
 
-    void addComponent(ComponentTypes... components) {
+    void addComponent(ComponentTypes... entityComponents) {
         entityCount++;
-        (getComponentVector<ComponentTypes>().push_back(components), ...);
+        (std::get<std::vector<ComponentTypes>>(components).push_back(entityComponents), ...);
     }
 };
 
@@ -49,20 +57,32 @@ class Query : public IQuery {
 public:
 
     Query(std::vector<IArchetype*> archetypes) {
-        //componentTypes = {typeid(ComponentTypes).hash_code()...};
         this->archetypes = archetypes;
     }
 
     template <class Func>
     void get(EntityHandle entity, Func func) {
+        static IArchetype *lastArchetype = nullptr;
+        static std::tuple<std::vector<ComponentTypes>*...> componentVectors =
+                std::make_tuple(static_cast<std::vector<ComponentTypes>*>(
+                entity.archetype->getComponentVector(std::type_index(typeid(ComponentTypes))))...);
+        if (lastArchetype != entity.archetype) {
+            componentVectors = std::make_tuple(static_cast<std::vector<ComponentTypes>*>(
+                    entity.archetype->getComponentVector(std::type_index(typeid(ComponentTypes))))...);
+            lastArchetype = entity.archetype;
+        }
+        func(&std::get<std::vector<ComponentTypes>*>(componentVectors)->at(entity.index)...);
     }
 
     template <class Func>
     void each(Func func) {
         for (auto &archetype : archetypes) {
-            std::tuple<std::vector<ComponentTypes>...> *componentVectors = archetype->getComponentVector();
-            for (int i = 0; i < entityCount; i++) {
-                func(&std::get<getTypeIndexInTemplateList<ComponentTypes, ComponentTypes...>()>(comp)->at(i)...);
+            std::tuple<std::vector<ComponentTypes>*...> componentVectors =
+                    std::make_tuple(static_cast<std::vector<ComponentTypes>*>(
+                    archetype->getComponentVector(std::type_index(typeid(ComponentTypes))))...);
+
+            for (int i = 0; i < archetype->entityCount; i++) {
+                func(&std::get<std::vector<ComponentTypes>*>(componentVectors)->at(i)...);
             }
         }
     }
@@ -130,7 +150,7 @@ private:
     template <class... ComponentTypes>
     void createArchetype(size_t key) {
         IArchetype *archetype = new Archetype<ComponentTypes...>();
-        //archetypeMap[key] = archetype;
+        archetypeMap[key] = archetype;
         (archetypeWithComponentMap[typeid(ComponentTypes).hash_code()].push_back(archetype), ...);
     }
 };
