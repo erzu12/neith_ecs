@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <ecs2.h>
+#include <ecs.h>
 
 struct Transform : public Component {
     float x, y, z;
